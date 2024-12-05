@@ -16,7 +16,7 @@ import matplotlib.pyplot as plt
 last_factorial = 1
 def dynamic_factorial(n):
     global last_factorial
-    last_factorial = n * last_factorial
+    last_factorial *= (2*n*(2*n-1))
     return last_factorial
 
 # Рекурсивная функция для вычисления факториала
@@ -37,7 +37,7 @@ last_F_value = 1;
 
 # Функция для вычисления значения F
 # F(n) = (-1)^n*(F(n–1) /(2n)!- 2*F(n-2)), при n > 1
-step = 1
+step = - 1
 def dynamic_F(n):
     global last_F_value
     if n == 0 and n == 1:
