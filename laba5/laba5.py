@@ -27,20 +27,23 @@ def recursive_factorial(n):
         return n * recursive_factorial(n-1)
 
 # Итеративная функция для вычисления факториала
+result = 1
+k = 2
 def iterative_factorial(n):
-    result = 1
-    for i in range(2, n+1):
+    global result, k
+    for i in range(k, n+1):
         result *= i
+        k = i
     return result
 
 last_F_value = 1;
 
 # Функция для вычисления значения F
 # F(n) = (-1)^n*(F(n–1) /(2n)!- 2*F(n-2)), при n > 1
-step = - 1
+step = -1
 def dynamic_F(n):
     global last_F_value
-    if n == 0 and n == 1:
+    if n == 0 or n == 1:
         return - 10
     else:
         global step
@@ -66,6 +69,8 @@ for n in n_values:
 print(f"{'n':<10}{'Рекурсивное время (мс)':<25}{'Итерационное время (мс)':<25}")
 for i, n in enumerate(n_values):
     print(f"{n:<10}{recursive_times[i]:<25}{iterative_times[i]:<25}")
+
+print("функция равна: ",dynamic_F(10))
 
 # Построение и вывод графика результатов
 plt.plot(n_values, recursive_times, label='Рекурсивно')
